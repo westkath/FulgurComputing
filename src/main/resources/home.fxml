@@ -29,6 +29,6 @@
         </GridPane>
       </children>
     </AnchorPane>
-    <TextArea id="welcomeMessage" editable="false" layoutX="20.0" layoutY="90.0" prefHeight="97.0" prefWidth="760.0" text="Welcome to Team Four's Amazing Shop!&#10;&#10;Browse Products using the 'View Products' button. &#10;View Basket using the 'View Basket' button." wrapText="true" />
+    <TextArea id="welcomeMessage" editable="false" layoutX="20.0" layoutY="110.0" prefHeight="97.0" prefWidth="760.0" text="Welcome to Team Four's Amazing Shop!&#10;&#10;Browse Products using the 'View Products' button. &#10;View Basket using the 'View Basket' button." wrapText="true" />
   </children>
 </AnchorPane>
