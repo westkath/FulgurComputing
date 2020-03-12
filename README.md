@@ -4,3 +4,5 @@ Team Members:
 - Kathleen West
 - Robynn McCrossan
 - Chris Murnin
+- Cameron Loveman
+
