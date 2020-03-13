@@ -43,7 +43,8 @@ public class Navigator {
         Parent productsRoot = loader.load();
         Scene productsScene = new Scene(productsRoot, 800, 600);
 
-        
+        ProductsController controller = loader.getController();
+        controller.loadProducts();
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(productsScene);
@@ -56,7 +57,8 @@ public class Navigator {
         Parent productRoot = loader.load();
         Scene productScene = new Scene(productRoot, 800, 600);
 
-        // any necessary changes
+        ProductController controller = loader.getController();
+        // controller.loadProduct(product); need to retrieve product
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(productScene);
@@ -69,7 +71,8 @@ public class Navigator {
         Parent basketRoot = loader.load();
         Scene basketScene = new Scene(basketRoot, 800, 600);
 
-        // any necessary changes
+        BasketController controller = loader.getController();
+        controller.loadProducts();
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(basketScene);
