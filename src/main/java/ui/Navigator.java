@@ -29,52 +29,50 @@ public class Navigator {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("home.fxml")));
 
-        Parent resultsRoot = loader.load();
-        Scene resultsScene = new Scene(resultsRoot, 800, 600);
-
-        // any necessary changes
+        Parent homeRoot = loader.load();
+        Scene homeScene = new Scene(homeRoot, 800, 600);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(resultsScene);
+        window.setScene(homeScene);
     }
 
     public void viewProducts(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("products.fxml")));
 
-        Parent resultsRoot = loader.load();
-        Scene resultsScene = new Scene(resultsRoot, 800, 600);
+        Parent productsRoot = loader.load();
+        Scene productsScene = new Scene(productsRoot, 800, 600);
 
-        // any necessary changes
+        
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(resultsScene);
+        window.setScene(productsScene);
     }
 
     public void viewProduct(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("product.fxml")));
 
-        Parent resultsRoot = loader.load();
-        Scene resultsScene = new Scene(resultsRoot, 800, 600);
+        Parent productRoot = loader.load();
+        Scene productScene = new Scene(productRoot, 800, 600);
 
         // any necessary changes
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(resultsScene);
+        window.setScene(productScene);
     }
 
     public void viewBasket(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("basket.fxml")));
 
-        Parent resultsRoot = loader.load();
-        Scene resultsScene = new Scene(resultsRoot, 800, 600);
+        Parent basketRoot = loader.load();
+        Scene basketScene = new Scene(basketRoot, 800, 600);
 
         // any necessary changes
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(resultsScene);
+        window.setScene(basketScene);
     }
 
 }
