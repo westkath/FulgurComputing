@@ -23,6 +23,10 @@ public class Engine {
         return basket;
     }
 
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
     public void addProductToBasket(Product product) {
         basket.addProduct(product);
     }

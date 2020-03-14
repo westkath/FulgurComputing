@@ -4,10 +4,7 @@ import data.DBConnection;
 import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Basket;
 import models.BasketRow;
@@ -83,6 +80,24 @@ public class BasketController {
         DBConnection connection = new DBConnection();
         connection.increaseStockLevel(product.getProductID());
         loadProducts();
+    }
+
+    public void checkout(ActionEvent event) {
+        basket = new Basket();
+        engine.setBasket(basket);
+        showCheckoutMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
+        try {
+            navigator.viewHome(event);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void showCheckoutMessage(String status, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(status);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }
