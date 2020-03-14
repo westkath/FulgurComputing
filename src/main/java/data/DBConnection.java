@@ -128,4 +128,13 @@ public class DBConnection {
         }
     }
 
+    public void increaseStockLevel(int productId) {
+        try {
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("UPDATE Product SET product_stock_level=product_stock_level + 1 WHERE product_id=" + productId + ";");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

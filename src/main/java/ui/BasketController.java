@@ -1,5 +1,6 @@
 package ui;
 
+import data.DBConnection;
 import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,6 +80,8 @@ public class BasketController {
 
     public void removeOneProduct(Product product) {
         engine.removeOneProductFromBasket(product);
+        DBConnection connection = new DBConnection();
+        connection.increaseStockLevel(product.getProductID());
         loadProducts();
     }
 
