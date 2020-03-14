@@ -1,5 +1,7 @@
 package data;
 
+import models.Product;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -65,7 +67,8 @@ public class DBConnection {
     }
 
     public void dropProductsTable() {
-        try (Statement dropTable = conn.createStatement()){
+        try {
+            Statement dropTable = conn.createStatement();
             dropTable.execute(dropProducts);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -73,7 +76,8 @@ public class DBConnection {
     }
 
     public void createProductsTable() {
-        try (Statement createTable = conn.createStatement()) {
+        try {
+            Statement createTable = conn.createStatement();
             createTable.execute(createProducts);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -81,7 +85,8 @@ public class DBConnection {
     }
 
     public void populateProductsTable() {
-        try (Statement populateTable = conn.createStatement();) {
+        try {
+            Statement populateTable = conn.createStatement();
             for (String row : populateProducts) {
                 populateTable.executeUpdate(row);
             }
@@ -90,19 +95,34 @@ public class DBConnection {
         }
     }
 
-    public void displayProductsTable(String query) {
-        try (Statement statement = conn.createStatement();) {
-            ResultSet results = statement.executeQuery(query);
+    public ResultSet getProductsInTable() throws SQLException {
+        Statement statement = conn.createStatement();
+        ResultSet results = statement.executeQuery("SELECT * FROM Product;");
+        return results;
+    }
 
-            System.out.println("Products Table: ");
-            while (results.next()) {
-                System.out.println(results.getString("product_id") + "\t" +
-                        results.getString("product_name") + "\t" +
-                        results.getString("product_description") + "\t" +
-                        results.getString("product_price") + "\t" +
-                        results.getString("product_stock_level"));
-            }
+    public Product getProductById(int productId) throws SQLException {
+        Product product = null;
 
+        Statement statement = conn.createStatement();
+        ResultSet results = statement.executeQuery("SELECT * FROM Product WHERE product_id=" + productId + ";");
+
+        while (results.next()) {
+            String name = results.getString("product_name");
+            String description = results.getString("product_description");
+            double price = results.getDouble("product_price");
+            int stockLevel = results.getInt("product_stock_level");
+
+            product = new Product(productId, name, description, price, stockLevel);
+        }
+
+        return product;
+    }
+
+    public void decreaseStockLevel(int productId) {
+        try {
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("UPDATE Product SET product_stock_level=product_stock_level - 1 WHERE product_id=" + productId + ";");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
