@@ -72,7 +72,7 @@ public class ProductController {
     }
 
     public void showErrorMessage(String error, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(error);
         alert.setContentText(message);
         alert.showAndWait();

@@ -43,8 +43,8 @@ public class ProductsController {
     }
 
     public void loadProducts() {
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        descCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         stockLevelCol.setCellValueFactory(new PropertyValueFactory<>("stockLevel"));
         viewProductCol.setCellValueFactory(new PropertyValueFactory<>("button"));
