@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="productPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="productPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.ProductController">
   <children>
     <AnchorPane id="navPanel" layoutX="0.0" layoutY="0.0" prefHeight="90.0" prefWidth="800.0">
       <children>
         <GridPane id="navigationPanel" layoutX="0.0" layoutY="0.0" prefWidth="800.0">
           <children>
-            <Button id="viewProductsBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button id="viewBasketBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button id="viewHomeBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewProductsBtn" mnemonicParsing="false" onAction="#viewProducts" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewBasketBtn" mnemonicParsing="false" onAction="#viewBasket" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewHomeBtn" mnemonicParsing="false" onAction="#viewHome" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />
@@ -38,18 +38,18 @@
             <Insets right="20.0" fx:id="x1" />
           </GridPane.margin>
         </Label>
-        <TextField id="productName" prefWidth="200.0" promptText="product name..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <TextField fx:id="productName" prefWidth="200.0" promptText="product name..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
           <GridPane.margin>
             <Insets left="20.0" right="80.0" fx:id="x2" />
           </GridPane.margin>
         </TextField>
         <Label id="productDescriptionLbl" text="Description" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.margin="$x1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <TextField id="productDescription" prefWidth="200.0" promptText="product description..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <TextField fx:id="productDescription" prefWidth="200.0" promptText="product description..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
         <Label id="productPriceLbl" text="Price" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.margin="$x1" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-        <TextField id="productPrice" prefWidth="200.0" promptText="product price..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+        <TextField fx:id="productPrice" prefWidth="200.0" promptText="product price..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
         <Label id="productStockLevelLbl" text="Stock Level" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.margin="$x1" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-        <TextField id="productStockLevel" prefWidth="200.0" promptText="product stock level..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-        <Button id="orderProductBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Order Product" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+        <TextField fx:id="productStockLevel" prefWidth="200.0" promptText="product stock level..." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.margin="$x2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+        <Button id="orderProductBtn" mnemonicParsing="false" onAction="#orderProduct" prefHeight="50.0" prefWidth="150.0" text="Order Product" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
           <GridPane.margin>
             <Insets left="154.0" />
           </GridPane.margin>

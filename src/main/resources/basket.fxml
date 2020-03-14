@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="basketPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="basketPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.BasketController">
   <children>
     <AnchorPane id="navPanel" layoutX="0.0" layoutY="0.0" prefHeight="90.0" prefWidth="800.0">
       <children>
         <GridPane id="navigationPanel" layoutX="0.0" layoutY="0.0" prefWidth="800.0">
           <children>
-            <Button id="viewProductsBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewProductsBtn" mnemonicParsing="false" onAction="#viewProducts" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button id="viewBasketBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button id="viewHomeBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewHomeBtn" mnemonicParsing="false" onAction="#viewHome" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />
@@ -32,17 +32,17 @@
     </AnchorPane>
     <ScrollPane hbarPolicy="NEVER" layoutX="20.0" layoutY="110.0" prefHeight="360.0" prefWidth="760.0">
       <content>
-        <TableView id="basketTbl" prefHeight="360.0" prefWidth="760.0">
+        <TableView id="basketTbl" fx:id="basketTable" prefHeight="360.0" prefWidth="760.0">
           <columns>
-            <TableColumn id="productsCol" prefWidth="350.0" text="Product" />
-            <TableColumn id="quantityCol" prefWidth="200.0" text="Quantity" />
-            <TableColumn id="removeOneCol" prefWidth="200.0" text="Remove 1x" />
+            <TableColumn id="productsCol" prefWidth="350.0" text="Product" fx:id="productsColumn" />
+            <TableColumn id="quantityCol" prefWidth="200.0" text="Quantity" fx:id="quantityColumn" />
+            <TableColumn id="removeOneCol" prefWidth="200.0" text="Remove 1x" fx:id="removeOneColumn" />
           </columns>
         </TableView>
       </content>
     </ScrollPane>
     <Label id="basketTotalLbl" alignment="CENTER_RIGHT" layoutX="326.0" layoutY="490.0" prefHeight="25.0" prefWidth="50.0" text="Total" />
-    <TextField id="basketTotal" layoutX="392.0" layoutY="490.0" prefWidth="75.0" />
+    <TextField fx:id="basketTotal" layoutX="392.0" layoutY="490.0" prefWidth="75.0" />
     <Button id="checkoutBtn" layoutX="351.0" layoutY="540.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0" text="Checkout" />
   </children>
 </AnchorPane>

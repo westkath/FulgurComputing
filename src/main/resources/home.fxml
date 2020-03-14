@@ -12,8 +12,8 @@
       <children>
         <GridPane id="navigationPanel" layoutX="0.0" layoutY="0.0" prefWidth="800.0">
           <children>
-            <Button id="viewProductsBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button id="viewBasketBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewProductsBtn" mnemonicParsing="false" onAction="#viewProducts" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewBasketBtn" mnemonicParsing="false" onAction="#viewBasket" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button id="viewHomeBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
           </children>
           <columnConstraints>
