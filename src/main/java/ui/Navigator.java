@@ -50,7 +50,7 @@ public class Navigator {
         window.setScene(productsScene);
     }
 
-    public void viewProduct(ActionEvent event) throws IOException {
+    public void viewProduct(ActionEvent event, int productId) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("product.fxml")));
 
@@ -58,7 +58,7 @@ public class Navigator {
         Scene productScene = new Scene(productRoot, 800, 600);
 
         ProductController controller = loader.getController();
-        // controller.loadProduct(product); need to retrieve product
+        controller.loadProduct(productId);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(productScene);
