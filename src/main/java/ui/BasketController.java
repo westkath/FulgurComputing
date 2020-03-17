@@ -10,7 +10,6 @@ import models.Basket;
 import models.BasketRow;
 import models.Product;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,19 +27,11 @@ public class BasketController {
     private Navigator navigator = Navigator.getInstance();
 
     public void viewHome(ActionEvent event) {
-        try {
-            navigator.viewHome(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewHome(event);
     }
 
     public void viewProducts(ActionEvent event) {
-        try {
-            navigator.viewProducts(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewProducts(event);
     }
 
     public void loadProducts() {
@@ -86,11 +77,7 @@ public class BasketController {
         basket = new Basket();
         engine.setBasket(basket);
         showCheckoutMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
-        try {
-            navigator.viewHome(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewHome(event);
     }
 
     public void showCheckoutMessage(String status, String message) {

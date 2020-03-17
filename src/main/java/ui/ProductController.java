@@ -5,11 +5,9 @@ import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import models.Product;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class ProductController {
@@ -24,27 +22,15 @@ public class ProductController {
     private Navigator navigator = Navigator.getInstance();
 
     public void viewHome(ActionEvent event) {
-        try {
-            navigator.viewHome(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewHome(event);
     }
 
     public void viewProducts(ActionEvent event) {
-        try {
-            navigator.viewProducts(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewProducts(event);
     }
 
     public void viewBasket(ActionEvent event) {
-        try {
-            navigator.viewBasket(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewBasket(event);
     }
 
     public void loadProduct(int productId) {

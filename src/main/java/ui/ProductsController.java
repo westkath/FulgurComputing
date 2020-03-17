@@ -27,19 +27,11 @@ public class ProductsController {
     Navigator navigator = Navigator.getInstance();
 
     public void viewHome(ActionEvent event) {
-        try {
-            navigator.viewHome(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewHome(event);
     }
 
     public void viewBasket(ActionEvent event) {
-        try {
-            navigator.viewBasket(event);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        navigator.viewBasket(event);
     }
 
     public void loadProducts() {
@@ -74,11 +66,7 @@ public class ProductsController {
 
                     Button viewButton = new Button("View Product");
                     viewButton.setOnAction(actionEvent -> {
-                        try {
-                            navigator.viewProduct(actionEvent, productId);
-                        } catch(IOException e) {
-                            System.out.println(e.getMessage());
-                        }
+                        navigator.viewProduct(actionEvent, productId);
                     });
 
                     ProductRow currentProductRow = new ProductRow(productId, name, description, price, stockLevel, viewButton);

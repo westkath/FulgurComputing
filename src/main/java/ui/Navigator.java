@@ -25,57 +25,62 @@ public class Navigator {
         return instance;
     }
 
-    public void viewHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("home.fxml")));
-
-        Parent homeRoot = loader.load();
-        Scene homeScene = new Scene(homeRoot, 800, 600);
-
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(homeScene);
+    public void viewHome(ActionEvent event) {
+        FXMLLoader loader = getLoader("home.fxml");
+        Scene homeScene = loadScene(loader);
+        setScene(event, homeScene);
     }
 
-    public void viewProducts(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("products.fxml")));
-
-        Parent productsRoot = loader.load();
-        Scene productsScene = new Scene(productsRoot, 800, 600);
+    public void viewProducts(ActionEvent event) {
+        FXMLLoader loader = getLoader("products.fxml");
+        Scene productsScene = loadScene(loader);
 
         ProductsController controller = loader.getController();
         controller.loadProducts();
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(productsScene);
+        setScene(event, productsScene);
     }
 
-    public void viewProduct(ActionEvent event, int productId) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("product.fxml")));
-
-        Parent productRoot = loader.load();
-        Scene productScene = new Scene(productRoot, 800, 600);
+    public void viewProduct(ActionEvent event, int productId) {
+        FXMLLoader loader = getLoader("product.fxml");
+        Scene productScene = loadScene(loader);
 
         ProductController controller = loader.getController();
         controller.loadProduct(productId);
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(productScene);
+        setScene(event, productScene);
     }
 
-    public void viewBasket(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource("basket.fxml")));
-
-        Parent basketRoot = loader.load();
-        Scene basketScene = new Scene(basketRoot, 800, 600);
+    public void viewBasket(ActionEvent event) {
+        FXMLLoader loader = getLoader("basket.fxml");
+        Scene basketScene = loadScene(loader);
 
         BasketController controller = loader.getController();
         controller.loadProducts();
 
+        setScene(event, basketScene);
+    }
+
+    private FXMLLoader getLoader(String fxmlFile) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Objects.requireNonNull(getClass().getClassLoader().getResource(fxmlFile)));
+        return loader;
+    }
+
+    private Scene loadScene(FXMLLoader loader) {
+        Scene scene = null;
+        try {
+            Parent root = loader.load();
+            scene = new Scene(root, 800, 600);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return scene;
+    }
+
+    private void setScene(ActionEvent event, Scene scene) {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(basketScene);
+        window.setScene(scene);
     }
 
 }
