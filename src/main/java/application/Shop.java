@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -20,7 +21,8 @@ public class Shop extends Application {
         Scene homeScene = new Scene(homeRoot, 800, 600);
 
         primaryStage.setScene(homeScene);
-        primaryStage.setTitle("Team Four | Shop");
+        primaryStage.setTitle("Fulgur Computing");
+        primaryStage.getIcons().add(new Image(String.valueOf(getClass().getClassLoader().getResource("icon.png"))));
         primaryStage.show();
     }
 
