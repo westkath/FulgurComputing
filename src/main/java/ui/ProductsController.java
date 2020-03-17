@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.DatabaseConstants.*;
+
 public class ProductsController extends Controller {
 
     @FXML private TableView<ProductRow> productsTable;
@@ -53,11 +55,11 @@ public class ProductsController extends Controller {
         if (results != null) {
             try {
                 while (results.next()) {
-                    int productId = results.getInt("product_id");
-                    String name = results.getString("product_name");
-                    String description = results.getString("product_description");
-                    String price = results.getString("product_price");
-                    String stockLevel = results.getString("product_stock_level");
+                    int productId = results.getInt(ID);
+                    String name = results.getString(NAME);
+                    String description = results.getString(DESCRIPTION);
+                    String price = results.getString(PRICE);
+                    String stockLevel = results.getString(STOCK_LEVEL);
 
                     Button viewButton = new Button("View Product");
                     viewButton.setOnAction(actionEvent -> {
