@@ -2,7 +2,6 @@ package ui;
 
 import data.DBConnection;
 import engine.Engine;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -19,10 +18,9 @@ public class ProductController extends Controller {
 
     private Product currentProduct;
     private Engine engine = Engine.getInstance();
+    private DBConnection db = DBConnection.getInstance();
 
     public void loadProduct(int productId) {
-        DBConnection db = new DBConnection();
-
         try {
             currentProduct = db.getProductById(productId);
         } catch (SQLException e) {
@@ -40,10 +38,7 @@ public class ProductController extends Controller {
             showErrorMessage("Not Enough Stock", "You cannot order a product when the current stock level is zero!");
         } else {
             engine.addProductToBasket(currentProduct);
-
-            DBConnection connection = new DBConnection();
-            connection.decreaseStockLevel(currentProduct.getProductID());
-
+            db.decreaseStockLevel(currentProduct.getProductID());
             loadProduct(currentProduct.getProductID());
         }
     }

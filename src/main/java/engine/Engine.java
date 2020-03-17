@@ -1,5 +1,6 @@
 package engine;
 
+import data.DBConnection;
 import models.Basket;
 import models.Product;
 
@@ -7,9 +8,11 @@ public class Engine {
 
     private static Engine instance;
     private Basket basket;
+    private DBConnection db;
 
     private Engine() {
         basket = new Basket();
+        db = DBConnection.getInstance();
     }
 
     public static Engine getInstance() {
@@ -33,6 +36,10 @@ public class Engine {
 
     public void removeOneProductFromBasket(Product product) {
         basket.removeOne(product);
+    }
+
+    public void prepareDatabase() {
+        db.setupDatabase();
     }
 
 }

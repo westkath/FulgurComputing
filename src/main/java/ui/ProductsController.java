@@ -23,6 +23,8 @@ public class ProductsController extends Controller {
     @FXML private TableColumn<ProductRow, String> stockLevelCol;
     @FXML private TableColumn<ProductRow, Button> viewProductCol;
 
+    private DBConnection db = DBConnection.getInstance();
+
     @Override
     public void viewProducts(ActionEvent event) {
         super.showPopup();
@@ -40,7 +42,6 @@ public class ProductsController extends Controller {
 
     private List<ProductRow> parseRows() {
         List<ProductRow> productRows = new ArrayList<>();
-        DBConnection db = new DBConnection();
         ResultSet results = null;
 
         try {

@@ -1,5 +1,6 @@
 package application;
 
+import engine.Engine;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,13 @@ public class Shop extends Application {
         primaryStage.setTitle("Fulgur Computing");
         primaryStage.getIcons().add(new Image(String.valueOf(getClass().getClassLoader().getResource("icon.png"))));
         primaryStage.show();
+
+        startEngine();
+    }
+
+    private void startEngine() {
+        Engine engine = Engine.getInstance();
+        engine.prepareDatabase();
     }
 
 }

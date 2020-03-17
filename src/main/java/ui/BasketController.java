@@ -23,6 +23,7 @@ public class BasketController extends Controller {
     @FXML private TextField basketTotal;
 
     private Engine engine = Engine.getInstance();
+    private DBConnection db = DBConnection.getInstance();
     private Basket basket;
 
     @Override
@@ -64,8 +65,7 @@ public class BasketController extends Controller {
 
     public void removeOneProduct(Product product) {
         engine.removeOneProductFromBasket(product);
-        DBConnection connection = new DBConnection();
-        connection.increaseStockLevel(product.getProductID());
+        db.increaseStockLevel(product.getProductID());
         loadProducts();
     }
 
