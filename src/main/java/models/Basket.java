@@ -61,4 +61,8 @@ public class Basket {
         }
     }
 
+    public boolean isBasketEmpty() {
+        return basketContents.isEmpty();
+    }
+
 }

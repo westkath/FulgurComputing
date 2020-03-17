@@ -70,13 +70,18 @@ public class BasketController extends Controller {
     }
 
     public void checkout(ActionEvent event) {
+        if (basket.isBasketEmpty()) {
+            showMessage("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
+            return;
+        }
+
         basket = new Basket();
         engine.setBasket(basket);
-        showCheckoutMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
+        showMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
         navigator.viewHome(event);
     }
 
-    public void showCheckoutMessage(String status, String message) {
+    public void showMessage(String status, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(status);
         alert.setContentText(message);
