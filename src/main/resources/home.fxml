@@ -14,7 +14,7 @@
           <children>
             <Button id="viewProductsBtn" mnemonicParsing="false" onAction="#viewProducts" prefHeight="50.0" prefWidth="280.0" text="View Products" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button id="viewBasketBtn" mnemonicParsing="false" onAction="#viewBasket" prefHeight="50.0" prefWidth="280.0" text="View Basket" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button id="viewHomeBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button id="viewHomeBtn" mnemonicParsing="false" onAction="#viewHome" prefHeight="50.0" prefWidth="120.0" text="Home" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
           </children>
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="320.0" />

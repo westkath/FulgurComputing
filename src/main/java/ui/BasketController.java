@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class BasketController {
+public class BasketController extends Controller {
 
     @FXML private TableView<BasketRow> basketTable;
     @FXML private TableColumn<BasketRow, String> productsColumn;
@@ -24,14 +24,10 @@ public class BasketController {
 
     private Engine engine = Engine.getInstance();
     private Basket basket;
-    private Navigator navigator = Navigator.getInstance();
 
-    public void viewHome(ActionEvent event) {
-        navigator.viewHome(event);
-    }
-
-    public void viewProducts(ActionEvent event) {
-        navigator.viewProducts(event);
+    @Override
+    public void viewBasket(ActionEvent event) {
+        super.showPopup();
     }
 
     public void loadProducts() {

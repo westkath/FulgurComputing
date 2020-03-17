@@ -10,7 +10,7 @@ import models.Product;
 
 import java.sql.SQLException;
 
-public class ProductController {
+public class ProductController extends Controller {
 
     @FXML private TextField productName;
     @FXML private TextField productDescription;
@@ -19,19 +19,6 @@ public class ProductController {
 
     private Product currentProduct;
     private Engine engine = Engine.getInstance();
-    private Navigator navigator = Navigator.getInstance();
-
-    public void viewHome(ActionEvent event) {
-        navigator.viewHome(event);
-    }
-
-    public void viewProducts(ActionEvent event) {
-        navigator.viewProducts(event);
-    }
-
-    public void viewBasket(ActionEvent event) {
-        navigator.viewBasket(event);
-    }
 
     public void loadProduct(int productId) {
         DBConnection db = new DBConnection();

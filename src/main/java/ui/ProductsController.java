@@ -9,13 +9,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.ProductRow;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsController {
+public class ProductsController extends Controller {
 
     @FXML private TableView<ProductRow> productsTable;
     @FXML private TableColumn<ProductRow, String> nameCol;
@@ -24,14 +23,9 @@ public class ProductsController {
     @FXML private TableColumn<ProductRow, String> stockLevelCol;
     @FXML private TableColumn<ProductRow, Button> viewProductCol;
 
-    Navigator navigator = Navigator.getInstance();
-
-    public void viewHome(ActionEvent event) {
-        navigator.viewHome(event);
-    }
-
-    public void viewBasket(ActionEvent event) {
-        navigator.viewBasket(event);
+    @Override
+    public void viewProducts(ActionEvent event) {
+        super.showPopup();
     }
 
     public void loadProducts() {

@@ -2,16 +2,11 @@ package ui;
 
 import javafx.event.ActionEvent;
 
-public class HomeController {
+public class HomeController extends Controller {
 
-    private Navigator navigator = Navigator.getInstance();
-
-    public void viewProducts(ActionEvent event) {
-        navigator.viewProducts(event);
-    }
-
-    public void viewBasket(ActionEvent event) {
-        navigator.viewBasket(event);
+    @Override
+    public void viewHome(ActionEvent event) {
+        super.showPopup();
     }
 
 }
