@@ -25,7 +25,7 @@ public class Shop extends Application {
 
         primaryStage.setScene(homeScene);
         primaryStage.setTitle("Fulgur Computing");
-        primaryStage.getIcons().add(new Image(String.valueOf(getClass().getClassLoader().getResource("icon.png"))));
+        primaryStage.getIcons().add(new Image(String.valueOf(getClass().getClassLoader().getResource("ui/icon.png"))));
         primaryStage.show();
 
         startDatabase();

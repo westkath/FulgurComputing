@@ -38,12 +38,12 @@ public class Engine {
     }
 
     private boolean isDatabaseOnline() {
-        File status = new File("status.txt");
+        File status = new File("database/status.txt");
         return status.exists();
     }
 
     private void createStatusFile() {
-        Path statusFile = Paths.get("status.txt");
+        Path statusFile = Paths.get("database/status.txt");
 
         String content = "Database is Online!";
         try {

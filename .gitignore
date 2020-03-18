@@ -1,5 +1,4 @@
 .idea/
 target/
 *.iml
-shop.db
-status.txt
+database/
