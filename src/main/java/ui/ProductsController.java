@@ -62,9 +62,7 @@ public class ProductsController extends Controller {
                     String stockLevel = results.getString(STOCK_LEVEL);
 
                     Button viewButton = new Button("View Product");
-                    viewButton.setOnAction(actionEvent -> {
-                        navigator.viewProduct(actionEvent, productId);
-                    });
+                    viewButton.setOnAction(actionEvent -> navigator.viewProduct(actionEvent, productId));
 
                     ProductRow currentProductRow = new ProductRow(productId, name, description, price, stockLevel, viewButton);
                     productRows.add(currentProductRow);

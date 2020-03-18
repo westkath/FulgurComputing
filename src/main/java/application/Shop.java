@@ -18,7 +18,7 @@ public class Shop extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent homeRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("home.fxml")));
+        Parent homeRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("ui/home.fxml")));
         Scene homeScene = new Scene(homeRoot, 800, 600);
 
         primaryStage.setScene(homeScene);

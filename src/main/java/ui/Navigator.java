@@ -26,13 +26,13 @@ public class Navigator {
     }
 
     public void viewHome(ActionEvent event) {
-        FXMLLoader loader = getLoader("home.fxml");
+        FXMLLoader loader = getLoader("ui/home.fxml");
         Scene homeScene = loadScene(loader);
         setScene(event, homeScene);
     }
 
     public void viewProducts(ActionEvent event) {
-        FXMLLoader loader = getLoader("products.fxml");
+        FXMLLoader loader = getLoader("ui/products.fxml");
         Scene productsScene = loadScene(loader);
 
         ProductsController controller = loader.getController();
@@ -42,7 +42,7 @@ public class Navigator {
     }
 
     public void viewProduct(ActionEvent event, int productId) {
-        FXMLLoader loader = getLoader("product.fxml");
+        FXMLLoader loader = getLoader("ui/product.fxml");
         Scene productScene = loadScene(loader);
 
         ProductController controller = loader.getController();
@@ -52,7 +52,7 @@ public class Navigator {
     }
 
     public void viewBasket(ActionEvent event) {
-        FXMLLoader loader = getLoader("basket.fxml");
+        FXMLLoader loader = getLoader("ui/basket.fxml");
         Scene basketScene = loadScene(loader);
 
         BasketController controller = loader.getController();
