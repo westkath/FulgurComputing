@@ -2,10 +2,7 @@ package data;
 
 import models.Product;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -80,18 +77,11 @@ public class DBConnection {
         return product;
     }
 
-    public void decreaseStockLevel(int productId) {
-        String update = getProperty(DECREASE_STOCK_LEVEL).replace(REPLACE_PRODUCT_ID, String.valueOf(productId));
-        try {
-            Statement statement = conn.createStatement();
-            statement.executeUpdate(update);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    public void adjustStockLevel(int productId, int quantity) {
+        String update = getProperty(ADJUST_STOCK_LEVEL);
+        update = update.replace(REPLACE_PRODUCT_ID, String.valueOf(productId));
+        update = update.replace(REPLACE_ADJUST_VALUE, String.valueOf(quantity));
 
-    public void increaseStockLevel(int productId) {
-        String update = getProperty(INCREASE_STOCK_LEVEL).replace(REPLACE_PRODUCT_ID, String.valueOf(productId));
         try {
             Statement statement = conn.createStatement();
             statement.executeUpdate(update);
@@ -113,6 +103,11 @@ public class DBConnection {
     }
 
     private String getProperty(String property) {
+        Properties prop = getPropertiesFile();
+        return prop.getProperty(property);
+    }
+
+    private Properties getPropertiesFile() {
         Properties prop = new Properties();
 
         try {
@@ -121,7 +116,7 @@ public class DBConnection {
             System.out.println(e.getMessage());
         }
 
-        return prop.getProperty(property);
+        return prop;
     }
 
 }

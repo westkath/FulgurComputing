@@ -4,6 +4,9 @@ import data.DBConnection;
 import models.Basket;
 import models.Product;
 
+import java.io.File;
+import java.util.Map;
+
 public class Engine {
 
     private static Engine instance;
@@ -30,16 +33,38 @@ public class Engine {
         this.basket = basket;
     }
 
-    public void addProductToBasket(Product product) {
-        basket.addProduct(product);
-    }
-
-    public void removeOneProductFromBasket(Product product) {
-        basket.removeOne(product);
+    private boolean isDatabaseOnline() {
+        File db = new File("shop.db");
+        return db.exists();
     }
 
     public void prepareDatabase() {
-        db.setupDatabase();
+        if (!isDatabaseOnline()) {
+            db.setupDatabase();
+        }
+    }
+
+    public void addProductToBasket(Product product) {
+        basket.addProduct(product);
+        db.adjustStockLevel(product.getProductID(), -1);
+    }
+
+    public void removeOneFromBasket(Product product) {
+        basket.removeOne(product);
+        db.adjustStockLevel(product.getProductID(), 1);
+    }
+
+    public void adjustStockIfNoCheckout() {
+        if (basket.isBasketEmpty()) {
+            return;
+        }
+
+        for (Map.Entry<Integer, Integer> basketEntry : basket.getBasketContents().entrySet()) {
+            int productId = basketEntry.getKey();
+            int quantity = basketEntry.getValue();
+
+            db.adjustStockLevel(productId, quantity);
+        }
     }
 
 }

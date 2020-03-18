@@ -64,8 +64,7 @@ public class BasketController extends Controller {
     }
 
     public void removeOneProduct(Product product) {
-        engine.removeOneProductFromBasket(product);
-        db.increaseStockLevel(product.getProductID());
+        engine.removeOneFromBasket(product);
         loadProducts();
     }
 

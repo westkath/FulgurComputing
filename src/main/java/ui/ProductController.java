@@ -38,7 +38,6 @@ public class ProductController extends Controller {
             showErrorMessage("Not Enough Stock", "You cannot order a product when the current stock level is zero!");
         } else {
             engine.addProductToBasket(currentProduct);
-            db.decreaseStockLevel(currentProduct.getProductID());
             loadProduct(currentProduct.getProductID());
         }
     }

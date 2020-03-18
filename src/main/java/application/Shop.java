@@ -12,6 +12,8 @@ import java.util.Objects;
 
 public class Shop extends Application {
 
+    private Engine engine = Engine.getInstance();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -27,11 +29,18 @@ public class Shop extends Application {
         primaryStage.show();
 
         startEngine();
+
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            adjustStock();
+        });
     }
 
     private void startEngine() {
-        Engine engine = Engine.getInstance();
         engine.prepareDatabase();
+    }
+
+    private void adjustStock() {
+        engine.adjustStockIfNoCheckout();
     }
 
 }

@@ -18,11 +18,11 @@ public class DatabaseConstants {
     // Query Constants
     public static final String SELECT_ALL = "select_all";
     public static final String PRODUCT_BY_ID = "product_by_id";
-    public static final String DECREASE_STOCK_LEVEL = "decrease_stock_level";
-    public static final String INCREASE_STOCK_LEVEL = "increase_stock_level";
+    public static final String ADJUST_STOCK_LEVEL = "adjust_stock_level";
 
     // Replace Constants
     public static final String REPLACE_PRODUCT_ID = "REPLACE_PRODUCT_ID";
+    public static final String REPLACE_ADJUST_VALUE = "REPLACE_ADJUST_VALUE";
 
     // Product Attribute Constants
     public static final String ID = "product_id";

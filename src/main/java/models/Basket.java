@@ -5,37 +5,33 @@ import java.util.Map;
 
 public class Basket {
 
-    private double basketTotal;
     private Map<Integer, Integer> basketContents;
     private Map<Integer, Product> productsInBasket;
 
-    public double getBasketTotal() { return basketTotal; }
-    public Map<Integer, Product> getProductsInBasket() { return productsInBasket; }
-    public Map<Integer, Integer> getBasketContents() { return basketContents; }
+    public Map<Integer, Product> getProductsInBasket() {
+        return productsInBasket;
+    }
 
-    public void setBasketTotal(double inBasketTotal) { basketTotal = inBasketTotal; }
-    public void setProductsInBasket(HashMap<Integer, Product> inProductsInBasket) { productsInBasket = inProductsInBasket; }
-    public void setBasketContents(HashMap<Integer, Integer> inBasketContents) { basketContents = inBasketContents; }
+    public Map<Integer, Integer> getBasketContents() {
+        return basketContents;
+    }
 
     public Basket() {
-
-        basketTotal = 0;
         basketContents = new HashMap<>();
         productsInBasket = new HashMap<>();
     }
 
     public double calculateBasketTotal(){
-
         double total = 0;
 
         for (Map.Entry<Integer, Integer> basketEntry : basketContents.entrySet()){
             int productId = basketEntry.getKey();
             int quantity = basketEntry.getValue();
-            Product currentProduct = productsInBasket.get(productId);
-            double price = currentProduct.getPrice();
+            double price = productsInBasket.get(productId).getPrice();
 
             total += (price * quantity);
         }
+
         return total;
     }
 
