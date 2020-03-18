@@ -5,6 +5,10 @@ import models.Basket;
 import models.Product;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 public class Engine {
@@ -34,13 +38,25 @@ public class Engine {
     }
 
     private boolean isDatabaseOnline() {
-        File db = new File("shop.db");
-        return db.exists();
+        File status = new File("status.txt");
+        return status.exists();
+    }
+
+    private void createStatusFile() {
+        Path statusFile = Paths.get("status.txt");
+
+        String content = "Database is Online!";
+        try {
+            Files.write(statusFile, content.getBytes());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void prepareDatabase() {
         if (!isDatabaseOnline()) {
             db.setupDatabase();
+            createStatusFile();
         }
     }
 

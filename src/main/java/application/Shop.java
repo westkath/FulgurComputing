@@ -28,14 +28,14 @@ public class Shop extends Application {
         primaryStage.getIcons().add(new Image(String.valueOf(getClass().getClassLoader().getResource("icon.png"))));
         primaryStage.show();
 
-        startEngine();
+        startDatabase();
 
         primaryStage.setOnCloseRequest(windowEvent -> {
             adjustStock();
         });
     }
 
-    private void startEngine() {
+    private void startDatabase() {
         engine.prepareDatabase();
     }
 
