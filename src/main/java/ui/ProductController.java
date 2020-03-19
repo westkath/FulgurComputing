@@ -1,6 +1,5 @@
 package ui;
 
-import data.DBConnection;
 import engine.Engine;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,13 +15,12 @@ public class ProductController extends Controller {
     @FXML private TextField productPrice;
     @FXML private TextField productStockLevel;
 
-    private Product currentProduct;
     private Engine engine = Engine.getInstance();
-    private DBConnection db = DBConnection.getInstance();
+    private Product currentProduct;
 
     public void loadProduct(int productId) {
         try {
-            currentProduct = db.getProductById(productId);
+            currentProduct = engine.getProductById(productId);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

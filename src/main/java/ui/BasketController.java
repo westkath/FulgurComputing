@@ -1,12 +1,10 @@
 package ui;
 
-import data.DBConnection;
 import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.Basket;
 import models.BasketRow;
 import models.Product;
 
@@ -23,8 +21,6 @@ public class BasketController extends Controller {
     @FXML private TextField basketTotal;
 
     private Engine engine = Engine.getInstance();
-    private DBConnection db = DBConnection.getInstance();
-    private Basket basket;
 
     @Override
     public void viewBasket(ActionEvent event) {
@@ -37,15 +33,14 @@ public class BasketController extends Controller {
         removeOneColumn.setCellValueFactory(new PropertyValueFactory<>("removeOne"));
 
         basketTable.getItems().setAll(parseRows());
-        basketTotal.setText("£" + basket.calculateBasketTotal());
+        basketTotal.setText("£" + engine.calculateBasketTotal());
     }
 
     public List<BasketRow> parseRows() {
         List<BasketRow> rows = new ArrayList<>();
 
-        basket = engine.getBasket();
-        Map<Integer, Product> productsInBasket = basket.getProductsInBasket();
-        for (Map.Entry<Integer, Integer> basketEntry : basket.getBasketContents().entrySet()) {
+        Map<Integer, Product> productsInBasket = engine.getProductsInBasket();
+        for (Map.Entry<Integer, Integer> basketEntry : engine.getBasketContents().entrySet()) {
             int productId = basketEntry.getKey();
             String quantity = String.valueOf(basketEntry.getValue());
             Product product = productsInBasket.get(productId);
@@ -69,13 +64,12 @@ public class BasketController extends Controller {
     }
 
     public void checkout(ActionEvent event) {
-        if (basket.isBasketEmpty()) {
+        if (engine.isBasketEmpty()) {
             showMessage("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
             return;
         }
 
-        basket = new Basket();
-        engine.setBasket(basket);
+        engine.clearBasket();
         showMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
         navigator.viewHome(event);
     }

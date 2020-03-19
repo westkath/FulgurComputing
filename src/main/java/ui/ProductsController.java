@@ -1,6 +1,7 @@
 package ui;
 
 import data.DBConnection;
+import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ public class ProductsController extends Controller {
     @FXML private TableColumn<ProductRow, String> stockLevelCol;
     @FXML private TableColumn<ProductRow, Button> viewProductCol;
 
-    private DBConnection db = DBConnection.getInstance();
+    private Engine engine = Engine.getInstance();
 
     @Override
     public void viewProducts(ActionEvent event) {
@@ -47,7 +48,7 @@ public class ProductsController extends Controller {
         ResultSet results = null;
 
         try {
-            results = db.getProductsInTable();
+            results = engine.getProductsInTable();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

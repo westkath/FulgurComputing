@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class Engine {
@@ -27,14 +29,6 @@ public class Engine {
             instance = new Engine();
         }
         return instance;
-    }
-
-    public Basket getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
     }
 
     private boolean isDatabaseOnline() {
@@ -70,6 +64,26 @@ public class Engine {
         db.adjustStockLevel(product.getProductID(), 1);
     }
 
+    public double calculateBasketTotal() {
+        return basket.calculateBasketTotal();
+    }
+
+    public Map<Integer, Integer> getBasketContents() {
+        return basket.getBasketContents();
+    }
+
+    public Map<Integer, Product> getProductsInBasket() {
+        return basket.getProductsInBasket();
+    }
+
+    public boolean isBasketEmpty() {
+        return basket.isBasketEmpty();
+    }
+
+    public void clearBasket() {
+        basket = new Basket();
+    }
+
     public void adjustStockIfNoCheckout() {
         if (basket.isBasketEmpty()) {
             return;
@@ -81,6 +95,14 @@ public class Engine {
 
             db.adjustStockLevel(productId, quantity);
         }
+    }
+
+    public ResultSet getProductsInTable() throws SQLException {
+        return db.getProductsInTable();
+    }
+
+    public Product getProductById(int productId) throws SQLException {
+        return db.getProductById(productId);
     }
 
 }
