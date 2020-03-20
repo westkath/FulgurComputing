@@ -1,6 +1,7 @@
 package engine;
 
 import data.DBConnection;
+import data.DBFunctionality;
 import models.Basket;
 import models.Product;
 

@@ -1,4 +1,4 @@
-package engine;
+package data;
 
 import models.Product;
 
