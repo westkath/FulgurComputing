@@ -1,5 +1,6 @@
 package ui;
 
+import engine.Navigator;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 
