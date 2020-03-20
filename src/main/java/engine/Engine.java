@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class Engine {
+public class Engine implements DBFunctionality {
 
     private static Engine instance;
     private Basket basket;

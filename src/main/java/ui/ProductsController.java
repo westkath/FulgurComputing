@@ -1,6 +1,5 @@
 package ui;
 
-import data.DBConnection;
 import engine.Engine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
