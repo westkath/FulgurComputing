@@ -44,13 +44,7 @@ public class ProductsController extends Controller {
 
     private List<ProductRow> parseRows() {
         List<ProductRow> productRows = new ArrayList<>();
-        ResultSet results = null;
-
-        try {
-            results = engine.getProductsInTable();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        ResultSet results = engine.getProductsInTable();
 
         if (results != null) {
             try {

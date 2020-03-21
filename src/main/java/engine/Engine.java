@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Map;
 
 public class Engine implements DBFunctionality {
@@ -98,11 +97,11 @@ public class Engine implements DBFunctionality {
         }
     }
 
-    public ResultSet getProductsInTable() throws SQLException {
+    public ResultSet getProductsInTable() {
         return db.getProductsInTable();
     }
 
-    public Product getProductById(int productId) throws SQLException {
+    public Product getProductById(int productId) {
         return db.getProductById(productId);
     }
 

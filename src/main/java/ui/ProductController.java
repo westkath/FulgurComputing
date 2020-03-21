@@ -6,8 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import models.Product;
 
-import java.sql.SQLException;
-
 public class ProductController extends Controller {
 
     @FXML private TextField productName;
@@ -19,11 +17,7 @@ public class ProductController extends Controller {
     private Product currentProduct;
 
     public void loadProduct(int productId) {
-        try {
-            currentProduct = engine.getProductById(productId);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        currentProduct = engine.getProductById(productId);
 
         productName.setText(currentProduct.getProductName());
         productDescription.setText(currentProduct.getDescription());
