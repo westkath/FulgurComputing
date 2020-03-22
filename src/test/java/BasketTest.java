@@ -66,10 +66,12 @@ public class BasketTest {
 
     @Test
     public void testCalculateTotal() {
+        double basketTotal = basket.calculateBasketTotal();
+        assertThat("Expected basket total of £0.00", basketTotal, is(0.00));
+
         populateBasket();
 
-        double basketTotal = basket.calculateBasketTotal();
-
+        basketTotal = basket.calculateBasketTotal();
         assertThat("Expected basket total of £274.98", basketTotal, is(274.98));
     }
 
@@ -88,13 +90,7 @@ public class BasketTest {
     }
 
     private int getUniqueItemsInBasket() {
-        int uniqueItems = 0;
-
-        for (Map.Entry<Integer, Integer> entry : basket.getBasketContents().entrySet()) {
-            uniqueItems += 1;
-        }
-
-        return uniqueItems;
+        return basket.getBasketContents().size();
     }
 
 }
