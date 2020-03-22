@@ -30,8 +30,15 @@ public class ProductController extends Controller {
             showErrorMessage("Not Enough Stock", "You cannot order a product when the current stock level is zero!");
         } else {
             engine.addProductToBasket(currentProduct);
+            if (engine.checkStockLevel(currentProduct)){
+                reOrderMessage();
+            }
             loadProduct(currentProduct.getProductID());
         }
+    }
+
+    public void reOrderMessage(){
+        showErrorMessage("Stock Reordered","Stock feel beneath minimum, more stock ordered!");
     }
 
     public void showErrorMessage(String error, String message) {

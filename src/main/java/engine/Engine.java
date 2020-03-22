@@ -13,6 +13,9 @@ import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.util.Map;
 
+import static utils.DatabaseConstants.*;
+import static utils.Utility.getProperty;
+
 public class Engine implements DBFunctionality {
 
     private static Engine instance;
@@ -103,6 +106,21 @@ public class Engine implements DBFunctionality {
 
     public Product getProductById(int productId) {
         return db.getProductById(productId);
+    }
+
+    public boolean checkStockLevel(Product product) {
+        boolean needToRestock = false;
+        int reorderLevel = Integer.parseInt(getProperty(REORDER_LEVEL));
+        if (product.getStockLevel() <= reorderLevel) {
+            reorderStock(product);
+            needToRestock = true;
+        }
+        return needToRestock;
+    }
+
+    public void reorderStock(Product product) {
+        int reorderQuantity = Integer.parseInt(getProperty(REORDER_STOCK));
+        db.adjustStockLevel(product.getProductID(), reorderQuantity);
     }
 
 }

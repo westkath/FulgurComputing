@@ -14,6 +14,7 @@ public class DatabaseConstants {
 
     // Re-Order Level Constants
     public static final String REORDER_LEVEL = "reorder_level";
+    public static final String REORDER_STOCK = "reorder_stock";
 
     // Query Constants
     public static final String SELECT_ALL = "select_all";
