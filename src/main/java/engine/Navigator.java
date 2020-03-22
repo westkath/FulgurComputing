@@ -82,6 +82,7 @@ public class Navigator {
     }
 
     private void setScene(ActionEvent event, Scene scene) {
+        scene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("ui/styleSheet.css")));
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
     }

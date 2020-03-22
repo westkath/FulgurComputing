@@ -22,6 +22,7 @@ public class Shop extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent homeRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("ui/home.fxml")));
         Scene homeScene = new Scene(homeRoot, 800, 600);
+        homeScene.getStylesheets().add(String.valueOf(getClass().getClassLoader().getResource("ui/styleSheet.css")));
 
         primaryStage.setScene(homeScene);
         primaryStage.setTitle("Fulgur Computing");
