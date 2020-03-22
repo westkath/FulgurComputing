@@ -15,9 +15,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Properties;
 
 import static utils.DatabaseConstants.*;
+import static utils.Utility.getProperty;
 
 public class DBConnection {
 
@@ -125,22 +125,6 @@ public class DBConnection {
         }
 
         return commands;
-    }
-
-    private String getProperty(String property) {
-        return getPropertiesFile().getProperty(property);
-    }
-
-    private Properties getPropertiesFile() {
-        Properties prop = new Properties();
-
-        try {
-            prop.load(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("db.properties")));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return prop;
     }
 
 }
