@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static utils.Utility.showInfoPopup;
+
 public class BasketController extends Controller {
 
     @FXML private TableView<BasketRow> basketTable;
@@ -65,20 +67,13 @@ public class BasketController extends Controller {
 
     public void checkout(ActionEvent event) {
         if (engine.isBasketEmpty()) {
-            showMessage("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
+            showInfoPopup("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
             return;
         }
 
         engine.clearBasket();
-        showMessage("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
+        showInfoPopup("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
         navigator.viewHome(event);
-    }
-
-    public void showMessage(String status, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(status);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
 }

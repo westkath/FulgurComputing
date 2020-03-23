@@ -2,9 +2,10 @@ package ui;
 
 import engine.Engine;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import models.Product;
+
+import static utils.Utility.showErrorPopup;
 
 public class ProductController extends Controller {
 
@@ -27,7 +28,7 @@ public class ProductController extends Controller {
 
     public void orderProduct() {
         if (currentProduct.getStockLevel() == 0) {
-            showErrorMessage("Not Enough Stock", "You cannot order a product when the current stock level is zero!");
+            showErrorPopup("Not Enough Stock", "You cannot order a product when the current stock level is zero!");
         } else {
             engine.addProductToBasket(currentProduct);
             if (engine.checkStockLevel(currentProduct)){
@@ -38,14 +39,7 @@ public class ProductController extends Controller {
     }
 
     public void reOrderMessage(){
-        showErrorMessage("Stock Reordered","Stock feel beneath minimum, more stock ordered!");
-    }
-
-    public void showErrorMessage(String error, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(error);
-        alert.setContentText(message);
-        alert.showAndWait();
+        showErrorPopup("Stock Reordered","Stock fell beneath minimum, more stock ordered!");
     }
 
 }

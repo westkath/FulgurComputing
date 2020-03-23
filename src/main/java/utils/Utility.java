@@ -1,5 +1,7 @@
 package utils;
 
+import javafx.scene.control.Alert;
+
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
@@ -20,6 +22,20 @@ public class Utility {
         }
 
         return prop;
+    }
+
+    public static void showErrorPopup(String error, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(error);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static void showInfoPopup(String status, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(status);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }
