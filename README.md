@@ -1,11 +1,6 @@
-Team 4's Awesome Shop Project
+**Fulgur Computing**
 
-Hey! Welcome to Team 4's Shop. Here customers can browse through our available products before adding them to the basket to checkout.
-Work is currently in progress, working on setting up each layer of the application. 
+Hi! Welcome to Fulgur Computing, a Desktop Application allowing you to browse through a selection of computer parts.
+It is a multi-layer application consisting of a Front-End with JavaFX, Engine with Java & Backend DB with SQLite.
 
-Team Members:
-- Kathleen West
-- Robynn McCrossan
-- Chris Murnin
-- Cameron Loveman
-
+It was a team project, with members being: Kathleen, Robynn, Chris & Cameron.
