@@ -2,19 +2,12 @@ package data;
 
 import models.Product;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.InputStream;
-import java.io.BufferedReader;
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static utils.DatabaseConstants.*;
 import static utils.Utility.getProperty;
@@ -23,6 +16,7 @@ public class DBConnection {
 
     private static DBConnection instance;
     private static Connection conn;
+    private DBSetup setup;
 
     private DBConnection() {
         try {
@@ -31,6 +25,7 @@ public class DBConnection {
             String password = getProperty(PASSWORD);
 
             conn = DriverManager.getConnection(dbhost, username, password);
+            setup = new DBSetupFromFile(SETUP_FILE);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -43,8 +38,12 @@ public class DBConnection {
         return instance;
     }
 
+    public void selectSetup(DBSetup setup) {
+        this.setup = setup;
+    }
+
     public void setupDatabase() {
-        List<String> commands = readDatabaseSetup(getProperty(SETUP_FILE));
+        List<String> commands = readDatabaseSetup();
 
         try {
             Statement statement = conn.createStatement();
@@ -113,18 +112,8 @@ public class DBConnection {
         }
     }
 
-    private List<String> readDatabaseSetup(String filename) {
-        List<String> commands = new ArrayList<>();
-
-        try (InputStream inStream = getClass().getClassLoader().getResourceAsStream(filename);
-             InputStreamReader inStreamReader = new InputStreamReader(Objects.requireNonNull(inStream), StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(inStreamReader)) {
-            reader.lines().forEach(commands::add);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return commands;
+    private List<String> readDatabaseSetup() {
+        return setup.readDatabaseSetup();
     }
 
 }
