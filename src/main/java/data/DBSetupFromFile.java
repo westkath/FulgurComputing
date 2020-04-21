@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static utils.Utility.getProperty;
+
 public class DBSetupFromFile implements DBSetup {
 
     private String filename;
@@ -20,7 +22,7 @@ public class DBSetupFromFile implements DBSetup {
     public List<String> readDatabaseSetup() {
         List<String> commands = new ArrayList<>();
 
-        try (InputStream inStream = getClass().getClassLoader().getResourceAsStream(filename);
+        try (InputStream inStream = getClass().getClassLoader().getResourceAsStream(getProperty(filename));
              InputStreamReader inStreamReader = new InputStreamReader(Objects.requireNonNull(inStream), StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(inStreamReader)) {
             reader.lines().forEach(commands::add);
