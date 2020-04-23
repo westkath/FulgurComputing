@@ -19,6 +19,7 @@ public class DBSetupFromFile implements DBSetup {
         this.filename = filename;
     }
 
+    @Override
     public List<String> readDatabaseSetup() {
         List<String> commands = new ArrayList<>();
 

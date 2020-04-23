@@ -1,27 +1,23 @@
 package utils;
 
 import javafx.scene.control.Alert;
-
-import java.io.IOException;
-import java.util.Objects;
 import java.util.Properties;
 
 public class Utility {
 
-    public static String getProperty(String property) {
-        return getPropertiesFile().getProperty(property);
+    private static DBProperties properties = new DBPropertiesFromFile();
+    private static Properties props;
+
+    public static void setProperties(DBProperties properties) {
+        Utility.properties = properties;
     }
 
-    public static Properties getPropertiesFile() {
-        Properties prop = new Properties();
-
-        try {
-            prop.load(Objects.requireNonNull(Utility.class.getClassLoader().getResourceAsStream("db.properties")));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public static String getProperty(String property) {
+        if (props == null) {
+            props = properties.getProperties();
         }
 
-        return prop;
+        return props.getProperty(property);
     }
 
     public static void showErrorPopup(String error, String message) {
