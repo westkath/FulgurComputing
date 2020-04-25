@@ -1,5 +1,7 @@
 package data;
 
+import utils.Helper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,8 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static utils.Utility.getProperty;
 
 public class DBSetupFromFile implements DBSetup {
 
@@ -32,6 +32,11 @@ public class DBSetupFromFile implements DBSetup {
         }
 
         return commands;
+    }
+
+    private String getProperty(String property) {
+        Helper helper = new Helper();
+        return helper.getProperty(property);
     }
 
 }

@@ -4,6 +4,7 @@ import data.DBConnection;
 import data.DBFunctionality;
 import models.Basket;
 import models.Product;
+import utils.Helper;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.sql.ResultSet;
 import java.util.Map;
 
 import static utils.DatabaseConstants.*;
-import static utils.Utility.getProperty;
 
 public class Engine implements DBFunctionality {
 
@@ -121,6 +121,11 @@ public class Engine implements DBFunctionality {
     public void reorderStock(Product product) {
         int reorderQuantity = Integer.parseInt(getProperty(REORDER_STOCK));
         db.adjustStockLevel(product.getProductID(), reorderQuantity);
+    }
+
+    private String getProperty(String property) {
+        Helper helper = new Helper();
+        return helper.getProperty(property);
     }
 
 }

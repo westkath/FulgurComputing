@@ -1,6 +1,7 @@
 package data;
 
 import models.Product;
+import utils.Helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,13 +11,12 @@ import java.sql.Statement;
 import java.util.List;
 
 import static utils.DatabaseConstants.*;
-import static utils.Utility.getProperty;
 
 public class DBConnection {
 
     private static DBConnection instance;
     private static Connection conn;
-    private DBSetup setup;
+    private DBSetup setup = new DBSetupFromFile(SETUP_FILE);
 
     private DBConnection() {
         try {
@@ -25,7 +25,6 @@ public class DBConnection {
             String password = getProperty(PASSWORD);
 
             conn = DriverManager.getConnection(dbhost, username, password);
-            setup = new DBSetupFromFile(SETUP_FILE);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -114,6 +113,11 @@ public class DBConnection {
 
     private List<String> readDatabaseSetup() {
         return setup.readDatabaseSetup();
+    }
+
+    private String getProperty(String property) {
+        Helper helper = new Helper();
+        return helper.getProperty(property);
     }
 
 }

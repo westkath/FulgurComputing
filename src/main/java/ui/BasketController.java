@@ -7,12 +7,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.BasketRow;
 import models.Product;
+import utils.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static utils.Utility.showInfoPopup;
 
 public class BasketController extends Controller {
 
@@ -66,13 +65,15 @@ public class BasketController extends Controller {
     }
 
     public void checkout(ActionEvent event) {
+        Helper helper = new Helper();
+
         if (engine.isBasketEmpty()) {
-            showInfoPopup("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
+            helper.showInfoPopup("Empty Basket", "Cannot Checkout with an Empty Basket - Get Shopping!");
             return;
         }
 
         engine.clearBasket();
-        showInfoPopup("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
+        helper.showInfoPopup("Success!", "You have ordered your products, basket total was " + basketTotal.getText());
         navigator.viewHome(event);
     }
 

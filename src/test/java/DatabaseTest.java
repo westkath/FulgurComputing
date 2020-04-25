@@ -1,10 +1,9 @@
 import data.DBConnection;
 import data.DBSetupFromStub;
 import org.junit.Before;
-
 import org.junit.Test;
-import utils.DBPropertiesFromStub;
-import utils.Utility;
+import org.mockito.Mockito;
+import utils.Helper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,9 @@ public class DatabaseTest {
 
     @Before
     public void setup() {
-        Utility.setProperties(new DBPropertiesFromStub());
+        Helper helper = Mockito.spy(Helper.class);
+        Mockito.doReturn("jdbc:sqlite:test.db").when(helper).getProperty(DB_HOST);
+
         connection = DBConnection.getInstance();
         connection.selectSetup(new DBSetupFromStub());
     }
